@@ -1,0 +1,18 @@
+{
+    "name": "qc/collaboration",
+    "description": "Standardisation des contributions au code source du projet PGU",
+    "license": [
+        "GPL-2.0-or-later"
+    ],
+    "require": {
+        "typo3/cms-core": "^11.5 || ^12",
+    	"ssch/typo3-rector": "*",
+		"typo3/coding-standards": "*"
+	},
+    "autoload": {
+        "psr-4": {
+            "Pgu\\PguMonExtension\\": "Classes/"
+        }
+    },
+    "version": "1.0.0"
+}
