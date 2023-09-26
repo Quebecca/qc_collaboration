@@ -6,8 +6,8 @@
     ],
     "require": {
         "typo3/cms-core": "^11.5 || ^12",
-    	"ssch/typo3-rector": "*",
-		"typo3/coding-standards": "*"
+    	"ssch/typo3-rector": "@dev",
+		"typo3/coding-standards": "@dev"
 	},
     "autoload": {
         "psr-4": {
