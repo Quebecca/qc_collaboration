@@ -22,7 +22,7 @@ L’utilisation se fait de la même façon que celles des extensions `typo3/codi
 En résumé:
 - initialisation :
   - initialisez votre projet avec la commande : `composer exec t3-cs s` qui ajoutera les fichiers .editorconfig et php-cs-fixer.dist.php dans votre projet.
-  - copier le fichier `rector.php` dans votre projet :  cp ./vendor/qc/collaboration/rector.php.dist rector.php
+  - copier le fichier `rector.php` dans votre projet :  `cp ./vendor/qc/collaboration/rector.php.dist rector.php`
 - Utilisation
   - Appliquez les standards de codage de cette façon : `composer exec php-cs-fixer fix` ;
   - Appliquez les réécritures de code rector ansi : `composer ci:php:rector` ;
