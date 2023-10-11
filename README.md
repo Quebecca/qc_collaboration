@@ -27,4 +27,19 @@ En résumé:
   - Appliquez les standards de codage de cette façon : `composer exec php-cs-fixer fix` ;
   - Appliquez les réécritures de code rector ansi : `composer ci:php:rector` ;
 
+# PHP Stan
+Il faut créer un nouveau dossier dans le root du projet avec le non build ou bien autres nom et ajouter le contenue à partir de ce qui existe dans le dossier build dans cette extension
+- Utilisation:
+    - n'oubliez pas de changer le `paths` et `scanDirectories` dans le fichier `phpstan.neon` il faut saisie le vrai path de dossier qui contient les extensions
 
+# StyleLint
+Un puissant linter CSS qui vous aide à éviter les erreurs et à respecter les conventions.
+
+- Installation:
+  - Il faut installer les 3 bibliothèques `stylelint`, `stylelint-config-recommended`, et `stylelint-no-browser-hacks` Npm
+
+- Utilisation:
+    Il faut ajouter les scripts NPM dans le main package.json
+    - `lint:style` : utiliser pour afficher les changements nécessaires dans les fichiers Scss ou bien Css(n'oubliez pas de modifier le path des fichiers scss)
+    - `lint:style:output`: Même rôle comme le `lint:style` juste ce script va créer un rapport ce format texte
+    - `lint:style:fix`: Même rôle comme le `lint:style` la seule différence il va implementer des corrections sur les fichiers assets
