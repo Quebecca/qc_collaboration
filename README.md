@@ -25,7 +25,7 @@ En résumé:
   - copier le fichier `rector.php` dans votre projet :  `cp ./vendor/qc/collaboration/rector.php.dist rector.php`
 - Utilisation
   - Appliquez les standards de codage de cette façon : `composer exec php-cs-fixer fix` ;
-  - Appliquez les réécritures de code rector ansi : `composer ci:php:rector` ;
+  - Appliquez les réécritures de code rector ansi : `composer exec rector processe <mon/extension>` ;
 
 # PHP Stan
 Il faut créer un nouveau dossier dans le root du projet avec le non build ou bien autres nom et ajouter le contenue à partir de ce qui existe dans le dossier build dans cette extension
