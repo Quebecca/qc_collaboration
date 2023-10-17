@@ -10,28 +10,26 @@
 		"typo3/coding-standards": "@dev",
 		"helmich/typo3-typoscript-lint": "@dev",
 		"ergebnis/composer-normalize": "@dev",
-		"phpstan/phpstan": "@dev",
 		"phpstan/extension-installer": "@dev",
-		"phpstan/phpstan-phpunit": "@dev",
-		"saschaegerer/phpstan-typo3": "@dev",
-		"phpspec/prophecy-phpunit": "@dev",
-		"squizlabs/php_codesniffer": "@dev",
-		"phpunit/phpunit": "@dev"
+		"saschaegerer/phpstan-typo3": "@dev"
 	},
     "autoload": {
     },
-	"scripts": {
-		"ci:php:lint": "find *.php *.php extensions/* -name '*.php' -print0 | xargs -r -0 -n 1 -P 4 php -l",
-		"ci:php:stan": "phpstan --no-progress --configuration=build/phpstan.neon",
-		"ci:composer:normalize": "@composer normalize --dry-run",
-		"ci:ts:lint": "typoscript-lint -c build/TsLint.yml --ansi -n --fail-on-warnings -vvv extensions/**/Configuration/TypoScript"
-	},
-	"scripts-descriptions": {
-		"ci:php:lint": "",
-		"ci:php:stan": "",
-		"ci:composer:normalize": "",
-		"ci:ts:lint": ""
+	"version": "12.4.6",
+	"templates": {
+		"help": "Copy both `scripts` and `scripts-descriptions` structures bellow in your project's composer.json to call commands via aliases. e.g. `composer ci:php:csfix`",
+		"scripts": {
+			"ci:php:csfix" : "php-cs-fixer",
+			"ci:php:stan": "phpstan --configuration=build/phpstan.neon",
+			"ci:composer:normalize": "@composer normalize",
+			"ci:php:rector": "rector -c build/rector.php"
+		},
+		"scripts-descriptions": {
+			"ci:php:csfix" : "PGU coding standardisation",
+			"ci:php:stan": "TYPO3 bugs detection",
+			"ci:composer:normalize": "Composer.json normalization",
+			"ci:php:rector": "Code refactoring TYPO3 stability"
+		}
+	}
 
-	},
-    "version": "1.0.0"
 }

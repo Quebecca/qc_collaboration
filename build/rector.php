@@ -29,7 +29,7 @@ return static function (RectorConfig $rectorConfig): void {
     // If you only want to process one/some TYPO3 extension(s), you can specify its path(s) here.
     // If you use the option --config change __DIR__ to getcwd()
 //     $rectorConfig->paths([
-//        __DIR__ . '/extensions/gabarit_pgu/',
+//        __DIR__ . '/extensions/mon-extension/',
 //     ]);
 
     // When you use rector there are rules that require some more actions like creating UpgradeWizards for outdated TCA types.

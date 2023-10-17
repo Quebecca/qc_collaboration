@@ -14,33 +14,64 @@ Installez cette extension par composer :
 Cette extension installe les extensions suivantes :
 - [typo3/coding-standards](https://github.com/TYPO3/coding-standards)
 - [typo3/rector](https://github.com/sabbelasichon/typo3-rector)
+- [helmich/typo3-typoscript-lint](https://github.com/martin-helmich/typo3-typoscript-lint)
+- [ergebnis/composer-normalize](https://github.com/ergebnis/composer-normalize)
+
+Elle contient aussi les fichiers de configuration pour PGU pour chacune des extensions listées ci-dessus dans le répertoire `/Build`.
 
 # Utilisation
 
-L’utilisation se fait de la même façon que celles des extensions `typo3/coding-standards` et `typo3/rector`, telles que décrites sur les pages github des projets respectifs.
+## En résumé:
 
-En résumé:
 - initialisation :
   - initialisez votre projet avec la commande : `composer exec t3-cs s` qui ajoutera les fichiers .editorconfig et php-cs-fixer.dist.php dans votre projet.
-  - copier le fichier `rector.php` dans votre projet :  `cp ./vendor/qc/collaboration/rector.php.dist rector.php`
-  - 
-- Utilisation
-  - Appliquez les standards de codage de cette façon : `composer exec php-cs-fixer fix` ;
-  - Appliquez les réécritures de code rector ansi : `composer exec rector process <mon/extension>` ;
+  - copier le répertoire `/build` dans votre projet :
+    - placez-vous à la racine de votre projet : `cd /chemin/de/votre/projet` ;
+    - `cp ./vendor/qc/collaboration/build .`
 
-# PHP Stan
-Il faut créer un nouveau dossier dans le root du projet avec le non build ou bien autres nom et ajouter le contenue à partir de ce qui existe dans le dossier build dans cette extension
-- Utilisation:
-    - n'oubliez pas de changer le `paths` et `scanDirectories` dans le fichier `phpstan.neon` il faut saisie le vrai path de dossier qui contient les extensions
 
-# StyleLint
-Un puissant linter CSS qui vous aide à éviter les erreurs et à respecter les conventions.
+- Commandes :
+  - Standardisation du code PHP : `composer exec php-cs-fixer -- fix` ;
+  - Réécritures de code rector : `composer exec rector -- process -c ./build/rector.php <mon/extension>` ;
+  - Standardisation du composer.json : `composer normalize -- <mon/extension/composer.json>`
+  - Détection de problèmes PHP : `composer exec phpstan -- analyse -c build/phpstan.neon <mon/extension>`
 
-- Installation:
-  - Il faut installer les 3 bibliothèques `stylelint`, `stylelint-config-recommended`, et `stylelint-no-browser-hacks` Npm
+## Pour plus de détails
+Nous invitons le lecteur à consulter les pages des projets pour chacune des extensions installées par `qc/collaboration` pour plus de détails sur leur fonctionnement et usage.
 
-- Utilisation:
-    Il faut ajouter les scripts NPM dans le main package.json
-    - `lint:style` : utiliser pour afficher les changements nécessaires dans les fichiers Scss ou bien Css(n'oubliez pas de modifier le path des fichiers scss)
-    - `lint:style:output`: Même rôle comme le `lint:style` juste ce script va créer un rapport ce format texte
-    - `lint:style:fix`: Même rôle comme le `lint:style` la seule différence il va implementer des corrections sur les fichiers assets
+## Script composer
+
+Dans le composer.json de qc/collaboration, vous trouverez des aliases de scripts dans une structure `templates` :
+
+```
+// qc_collaboration/composer.json
+{
+  ...
+  "templates": {
+        "help": "Copy both script and script-description bellow in your project's composer.json to call commands via aliases. e.g. `composer ci:php:csfix`",
+        "scripts": {
+            // qc_collaboration scripts aliases
+        },
+        "scripts-descriptions": {
+            // qc_collaboration scripts descriptions
+        }
+    }
+}
+```
+
+Copiez-les dans le composer.json de votre projet :
+```
+// votre_projet/composer.json
+{
+    ...
+    "scripts": {
+        // qc_collaboration scripts aliases
+    },
+    "scripts-descriptions": {
+        // qc_collaboration scripts aliases
+    }
+},
+```
+De cette façon vous pourrez appeler les commandes de façon simplifiées :
+
+par exemple : `composer ci:php:rector process --dry-run mon/extension`
