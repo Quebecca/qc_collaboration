@@ -30,11 +30,11 @@ Elle contient aussi les fichiers de configuration pour PGU pour chacune des exte
     - `cp ./vendor/qc/collaboration/build .`
 
 
-- Commandes :
+- Commandes  (à exécuter placé au même niveau que votre composer.json):
   - Standardisation du code PHP : `composer exec php-cs-fixer -- fix` ;
-  - Réécritures de code rector : `composer exec rector -- process -c ./build/rector.php <mon/extension>` ;
-  - Standardisation du composer.json : `composer normalize -- <mon/extension/composer.json>`
-  - Détection de problèmes PHP : `composer exec phpstan -- analyse -c build/phpstan.neon <mon/extension>`
+  - Réécritures de code rector : `composer exec rector -- process -c ./build/rector.php <./chemin/de/mon/extension>` ;
+  - Standardisation du composer.json : `composer normalize -- <./chemin/de/mon/extension>`
+  - Détection de problèmes PHP : `composer exec phpstan -- analyse -c build/phpstan.neon <./chemin/de/mon/extension>`
 
 ## Pour plus de détails
 Nous invitons le lecteur à consulter les pages des projets pour chacune des extensions installées par `qc/collaboration` pour plus de détails sur leur fonctionnement et usage.
