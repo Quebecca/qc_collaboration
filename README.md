@@ -23,6 +23,8 @@ Elle contient aussi les fichiers de configuration pour PGU pour chacune des exte
 
 ## En résumé:
 
+NB : les instructions suivantes sont indiquées à titre indicatif, pour une prise en main rapide. **Nous invitons fortement** le lecteur à consulter les pages des projets listés dans la sections « Contenu de l’extensions » pour le détail de chaque commande.
+
 - initialisation :
   - initialisez votre projet avec la commande : `composer exec t3-cs s` qui ajoutera les fichiers .editorconfig et php-cs-fixer.dist.php dans votre projet.
   - copier le répertoire `/build` dans votre projet :
@@ -30,8 +32,8 @@ Elle contient aussi les fichiers de configuration pour PGU pour chacune des exte
     - `cp ./vendor/qc/collaboration/build .`
 
 
-- Commandes  (à exécuter placé au même niveau que votre composer.json):
-  - Standardisation du code PHP : `composer exec php-cs-fixer -- fix` ;
+- Commandes  (à exécuter **placé au même niveau que votre composer.json**):
+  - Standardisation du code PHP : `composer exec php-cs-fixer -- fix <./chemin/de/mon/extension>` ;
   - Réécritures de code rector : `composer exec rector -- process -c ./build/rector.php <./chemin/de/mon/extension>` ;
   - Standardisation du composer.json : `composer normalize -- <./chemin/de/mon/extension>/composer.json`
   - Détection de problèmes PHP : `composer exec phpstan -- analyse -c build/phpstan.neon <./chemin/de/mon/extension>`
