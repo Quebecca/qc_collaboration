@@ -37,7 +37,7 @@ NB : les instructions suivantes sont indiquées à titre indicatif, pour une p
   - Réécritures de code rector : `composer exec rector -- process -c ./build/rector.php <./chemin/de/mon/extension>` ;
   - Standardisation du composer.json : `composer normalize -- <./chemin/de/mon/extension>/composer.json`
   - Détection de problèmes PHP : `composer exec phpstan -- analyse -c build/phpstan.neon <./chemin/de/mon/extension>`
-
+  - Détection de problèmes Typoscript : `composer exec typoscript-lint -- -c build/TsLint.yml <./chemin/du/fichier.typoscript>`
 ## Pour plus de détails
 Nous invitons le lecteur à consulter les pages des projets pour chacune des extensions installées par `qc/collaboration` pour plus de détails sur leur fonctionnement et usage.
 

@@ -26,10 +26,11 @@ return static function (RectorConfig $rectorConfig): void {
     // Define your target version which you want to support
     $rectorConfig->phpVersion(PhpVersion::PHP_82);
 
+
     // If you only want to process one/some TYPO3 extension(s), you can specify its path(s) here.
     // If you use the option --config change __DIR__ to getcwd()
 //     $rectorConfig->paths([
-//        __DIR__ . '/extensions/mon-extension/',
+//        __DIR__ . '/../src/extension/',
 //     ]);
 
     // When you use rector there are rules that require some more actions like creating UpgradeWizards for outdated TCA types.
@@ -38,25 +39,27 @@ return static function (RectorConfig $rectorConfig): void {
     // If you use importNames(), you should consider excluding some TYPO3 files.
     $rectorConfig->skip([
         // @see https://github.com/sabbelasichon/typo3-rector/issues/2536
-        __DIR__ . '/**/Configuration/ExtensionBuilder/*',
+        __DIR__ . '/../*/Configuration/ExtensionBuilder/*',
         // We skip those directories on purpose as there might be node_modules or similar
         // that include typescript which would result in false positive processing
-        __DIR__ . '/**/Resources/**/node_modules/*',
-        __DIR__ . '/**/Resources/**/NodeModules/*',
-        __DIR__ . '/**/Resources/**/BowerComponents/*',
-        __DIR__ . '/**/Resources/**/bower_components/*',
-        __DIR__ . '/**/Resources/**/build/*',
-        __DIR__ . '/vendor/*',
-        __DIR__ . '/Build/*',
-        __DIR__ . '/public/*',
-        __DIR__ . '/.github/*',
-        __DIR__ . '/.Build/*',
+        __DIR__ . '/../*/Resources/*/node_modules/*',
+        __DIR__ . '/../*/Resources/*/NodeModules/*',
+        __DIR__ . '/../*/Resources/*/BowerComponents/*',
+        __DIR__ . '/../*/Resources/*/bower_components/*',
+        __DIR__ . '/../*/Resources/*/build/*',
+        __DIR__ . '/../*/vendor/*',
+        __DIR__ . '/../*/Vendor/*',
+        __DIR__ . '/../*/vendor/*',
+        __DIR__ . '/../Build/*',
+        __DIR__ . '/../public/*',
+        __DIR__ . '/../.github/*',
+        __DIR__ . '/../.Build/*',
         NameImportingPostRector::class => [
             'ext_localconf.php',
             'ext_tables.php',
             'ClassAliasMap.php',
-            __DIR__ . '/**/Configuration/*.php',
-            __DIR__ . '/**/Configuration/**/*.php',
+            __DIR__ . '/../*/Configuration/*.php',
+            __DIR__ . '/../*/Configuration/*/*.php',
         ]
     ]);
 
@@ -70,7 +73,7 @@ return static function (RectorConfig $rectorConfig): void {
     // register a single rule
     // $rectorConfig->rule(\Ssch\TYPO3Rector\Rector\v9\v0\InjectAnnotationRector::class);
 
-    /**
+    /*
      * Useful rule from RectorPHP itself to transform i.e. GeneralUtility::makeInstance('TYPO3\CMS\Core\Log\LogManager')
      * to GeneralUtility::makeInstance(\TYPO3\CMS\Core\Log\LogManager::class) calls.
      * But be warned, sometimes it produces false positives (edge cases), so watch out
