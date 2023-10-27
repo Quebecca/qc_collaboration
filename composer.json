@@ -7,6 +7,7 @@
     "require": {
         "typo3/cms-core": "^11.5 || ^12",
     	"ssch/typo3-rector": "@dev",
+		"rector/rector": "*",
 		"typo3/coding-standards": "@dev",
 		"helmich/typo3-typoscript-lint": "@dev",
 		"ergebnis/composer-normalize": "@dev",
