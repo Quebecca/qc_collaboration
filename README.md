@@ -76,4 +76,4 @@ Copiez-les dans le composer.json de votre projet :
 ```
 De cette façon vous pourrez appeler les commandes de façon simplifiées :
 
-par exemple : `composer ci:php:rector process --dry-run mon/extension`
+par exemple : `composer ci:php:rector process -- --dry-run mon/extension`
