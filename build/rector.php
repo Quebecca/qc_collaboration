@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\Core\Configuration\Option;
-use Rector\Core\ValueObject\PhpVersion;
 use Rector\PostRector\Rector\NameImportingPostRector;
+use Rector\ValueObject\PhpVersion;
+use Ssch\TYPO3Rector\CodeQuality\General\ConvertImplicitVariablesToExplicitGlobalsRector;
+use Ssch\TYPO3Rector\CodeQuality\General\ExtEmConfRector;
 use Ssch\TYPO3Rector\Configuration\Typo3Option;
-use Ssch\TYPO3Rector\Rector\General\ConvertImplicitVariablesToExplicitGlobalsRector;
-use Ssch\TYPO3Rector\Rector\General\ExtEmConfRector;
 use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
@@ -20,18 +19,18 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         Typo3LevelSetList::UP_TO_TYPO3_11,
         Typo3LevelSetList::UP_TO_TYPO3_12,
+        Typo3LevelSetList::UP_TO_TYPO3_13,
     ]);
 
     $rectorConfig->phpstanConfig(Typo3Option::PHPSTAN_FOR_RECTOR_PATH);
     // Define your target version which you want to support
     $rectorConfig->phpVersion(PhpVersion::PHP_82);
 
-
     // If you only want to process one/some TYPO3 extension(s), you can specify its path(s) here.
     // If you use the option --config change __DIR__ to getcwd()
-//     $rectorConfig->paths([
-//        __DIR__ . '/../src/extension/',
-//     ]);
+    //     $rectorConfig->paths([
+    //        __DIR__ . '/../src/extension/',
+    //     ]);
 
     // When you use rector there are rules that require some more actions like creating UpgradeWizards for outdated TCA types.
     // To fully support you we added some warnings. So watch out for them.
@@ -60,7 +59,7 @@ return static function (RectorConfig $rectorConfig): void {
             'ClassAliasMap.php',
             __DIR__ . '/../*/Configuration/*.php',
             __DIR__ . '/../*/Configuration/*/*.php',
-        ]
+        ],
     ]);
 
     // If you have trouble that rector cannot run because some TYPO3 constants are not defined add an additional constants file
@@ -91,7 +90,7 @@ return static function (RectorConfig $rectorConfig): void {
     // Add some general TYPO3 rules
     $rectorConfig->rule(ConvertImplicitVariablesToExplicitGlobalsRector::class);
     $rectorConfig->ruleWithConfiguration(ExtEmConfRector::class, [
-        ExtEmConfRector::ADDITIONAL_VALUES_TO_BE_REMOVED => []
+        ExtEmConfRector::ADDITIONAL_VALUES_TO_BE_REMOVED => [],
     ]);
 
     // Modernize your TypoScript include statements for files and move from <INCLUDE /> to @import use the FileIncludeToImportStatementVisitor (introduced with TYPO3 9.0)

@@ -29,7 +29,7 @@ NB : les instructions suivantes sont indiquées à titre indicatif, pour une p
   - initialisez votre projet avec la commande : `composer exec t3-cs s` qui ajoutera les fichiers .editorconfig et php-cs-fixer.dist.php dans votre projet.
   - copier le répertoire `/build` dans votre projet :
     - placez-vous à la racine de votre projet : `cd /chemin/de/votre/projet` ;
-    - `cp ./vendor/qc/collaboration/build .`
+    - `cp -r ./vendor/qc/collaboration/build .`
 
 
 - Commandes  (à exécuter **placé au même niveau que votre composer.json**):
